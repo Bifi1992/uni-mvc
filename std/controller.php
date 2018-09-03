@@ -1,43 +1,23 @@
 <?php
 namespace std;
 class Controller {
-  private $modul;
-  private $modulname;
+  private $module;
+  private $modulename;
   private $viewname;
+  private $view;
 
   public function __construct() {
-    $route = explode("/", preg_replace('~^' . WEBDIR . '~', '', $_SERVER['REQUEST_URI']);
-    $this->modulname = $route[0];
-    $this->viewname = basename($route[1], '.htm');
+    $route = explode("/", preg_replace('~^' . WEBDIR . '~', '', $_SERVER['REQUEST_URI']));
+    $this->modulename = $route[0] ? $route[0] : 'start';
+    $this->viewname = basename((isset($route[1]) ? $route[1] : 'default'), '.htm');
+    $this->view = new \std\View();
   }
   public function render() : string {
-    return "
-                T\ T\
-                | \| \
-                |  |  :
-           _____I__I  |
-         .'            '.
-       .'                '
-       |   ..             '
-       |  /__.            |
-       :.' -'             |
-      /__.                |
-     /__, \               |
-        |__\        _|    |
-        :  '\     .'|     |
-        |___|_,,,/  |     |    _..--.
-     ,--_-   |     /'      \../ /  /\\
-    ,'|_ I---|    7    ,,,_/ / ,  / _\\
-  ,-- 7 \|  / ___..,,/   /  ,  ,_/   '-----.
- /   ,   \  |/  ,____,,,__,,__/            '\
-,   ,     \__,,/                             |
-| '.       _..---.._                         !.
-! |      .' z_M__s. '.                        |
-.:'      | (-_ _--')  :          L            !
-.'.       '.  Y    _.'             \,         :
- .          '-----'                 !          .
-  .           /  \                   .          .
-";
+    $modulecontroller = '\\modules\\' . $this->modulename . '\\Controller';
+    $this->module = new $modulecontroller();
+    $this->view->content = $this->module->render();
+    $this->view->setTemplate('default', __DIR__ . '/templates/');
+    return $this->view->loadTemplate();
   }
 }
 
