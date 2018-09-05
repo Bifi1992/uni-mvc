@@ -5,7 +5,7 @@
   </head>
   <body>
     <header>
-      <h1>Inhalt aus <?= __DIR__ ?></h1>
+      <h1>Inhalt aus <?= __FILE__ ?></h1>
       <nav>
         <ol>
           <li><a href = "<?= WEBDIR ?>">Home</a></li>

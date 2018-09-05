@@ -1,1 +1,1 @@
-<?php echo "ich bin aus dem Modul: " . __DIR__;
+<?php echo "ich bin aus dem Modul: " . __FILE__;
