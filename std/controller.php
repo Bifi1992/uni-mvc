@@ -1,9 +1,10 @@
 <?php
 namespace std;
+
 class Controller {
   private $module;
   private $modulename;
-  private $viewname;
+  protected $viewname;
 
   public function __construct() {
     $route = explode("/", preg_replace('~^' . WEBDIR . '~', '', $_SERVER['REQUEST_URI']));

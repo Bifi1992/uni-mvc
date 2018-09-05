@@ -5,7 +5,7 @@ class View {
   private $path = 'templates';
 
   public function __construct() {
-    echo "view";
+    //echo "view";
   }
 
   public function setTemplate(string $template = null, string $path = null) : void {

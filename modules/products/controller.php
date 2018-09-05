@@ -1,9 +1,24 @@
 <?php
 namespace modules\products;
 
-class Controller {
+class Controller extends \std\Controller {
+  private $model;
+
+  public function __construct() {
+    parent::__construct();
+    $this->model = new Model();
+  }
+
   public function render() :string {
-    \Config::getView()->setTemplate('default', __DIR__ . '/templates/');
+    switch ($this->viewname) {
+    case 'product':
+      break;
+    case 'group':
+      break;
+    default:
+      echo "viewname not handled";
+    }
+    \Config::getView()->setTemplate($this->viewname, __DIR__ . '/templates/');
     return \Config::getView()->loadTemplate();
   }
 }
