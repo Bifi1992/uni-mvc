@@ -4,6 +4,10 @@ class View {
   private $template = 'default';
   private $path = 'templates';
 
+  public function __construct() {
+    echo "view";
+  }
+
   public function setTemplate(string $template = null, string $path = null) : void {
     $this->path = $path;
     $this->tempate = $template;
