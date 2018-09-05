@@ -1,5 +1,5 @@
 <?php
-namespace modules\start;
+namespace modules\products;
 
 class Controller {
   private $view;

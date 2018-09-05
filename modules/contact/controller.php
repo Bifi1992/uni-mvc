@@ -1,5 +1,5 @@
 <?php
-namespace modules\start;
+namespace modules\contact;
 
 class Controller {
   private $view;

@@ -1,5 +1,5 @@
 <?php
-namespace modules\start;
+namespace modules\career;
 
 class Controller {
   private $view;
