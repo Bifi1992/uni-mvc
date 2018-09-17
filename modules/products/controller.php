@@ -12,6 +12,7 @@ class Controller extends \std\Controller {
   public function render() :string {
     switch ($this->viewname) {
     case 'product':
+      var_dump($this->model->getProductByName('Kuchlbauer'));
       break;
     case 'group':
       break;
