@@ -1,7 +1,7 @@
 <?php
 namespace std;
 class View {
-  private $template = 'default';
+  public $template = 'default';
   private $path = 'templates';
 
   public function __construct() {
@@ -10,7 +10,7 @@ class View {
 
   public function setTemplate(string $template = null, string $path = null) : void {
     $this->path = $path;
-    $this->tempate = $template;
+    $this->template = $template;
 
     if (!file_exists($path . $template . '.php')) {
       header('HTTP/1.0 404 File not found');
@@ -21,7 +21,7 @@ class View {
 
   public function loadTemplate() {
     ob_start();
-    require_once($this->path . $this->template . '.php');
+    require($this->path . $this->template . '.php');
     $output = ob_get_contents();
     ob_end_clean();
     return $output;

@@ -15,6 +15,7 @@ class Controller {
   public function render() : string {
     $modulecontroller = '\\modules\\' . $this->modulename . '\\Controller';
     $this->module = new $modulecontroller();
+//    echo \Config::getView()->template;
     \Config::getView()->content = $this->module->render();
     \Config::getView()->setTemplate('default', __DIR__ . '/templates/');
     return \Config::getView()->loadTemplate();
