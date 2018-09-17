@@ -6,10 +6,10 @@ class Model extends \std\DbConnect {
     parent::__construct();
   }
 
-  public function getProductByName( string $name ) : \stdClass {
-    $sql = "select * from product where name = :NAME";
+  public function getProductByName( string $name ) : array {
+    $sql = "select * from unimvc.product where name = :NAME";
     $prepare = \Config::getConnection()->prepare($sql);
-    $result = \Config::getConnection()->execute(array(':NAME' => $name));
-    return $result->fetchAll(\PDO::FETCH_OBJ);
+    $result = $prepare->execute(array(':NAME' => $name));
+    return $prepare->fetchAll(\PDO::FETCH_OBJ);
   }
 }
